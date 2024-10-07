@@ -29,7 +29,7 @@ gcc main.c -o dist/main
 
 # function to choose delete empty file or not
 function delete_empty_file {
- ./dist/main
+ ./dist/main '1:Yes' '0:No'
 
  local return_code=$?
 
@@ -54,8 +54,6 @@ function scan_files {
         if [ ! -s $file ]; then
           echo "File $file is empty"
           delete_empty_file $file
-        else
-          echo "File $file is not empty"
         fi
       fi
     fi
