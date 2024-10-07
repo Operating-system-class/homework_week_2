@@ -1,6 +1,22 @@
 #!/bin/bash
 
 
+# Check the number of arguments
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <directory>"
+    exit 1
+fi
+
+# Check if the argument is a directory
+# get the directory path from the first argument
+dir_path=$1
+
+if [ ! -d "$dir_path" ]; then
+    echo "Error: $dir_path is not a directory."
+    exit 1
+fi
+
+
 #create folder ./dist to contain compiled program
 if [ -d dist ]; then
   rm -rf dist
@@ -25,9 +41,6 @@ function delete_empty_file {
   fi
 }
 
-
-# get the directory path from the first argument
-dir_path=$1
 
 #function to scan all files in the directory
 # to check recursively all files in the current directory is empty or not.
